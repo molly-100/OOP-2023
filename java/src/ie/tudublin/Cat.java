@@ -17,7 +17,7 @@ public class Cat {
 	
 	public Cat()
 	{
-        System.out.println("created instance\n");
+        
 	}
 	
 	public Cat(String name)
