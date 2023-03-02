@@ -32,6 +32,37 @@ public class Audio2 extends PApplet{
         fft = new FFT(width, 44100);
     }
 
+
+    public class PitchSpeller {
+
+        float[] frequencies = {293.66f, 329.63f, 369.99f, 392.00f, 440.00f, 493.88f, 554.37f, 587.33f
+            , 659.25f, 739.99f, 783.99f, 880.00f, 987.77f, 1108.73f, 1174.66f};
+        String[] spellings = {"D,", "E,", "F,", "G,", "A,", "B,", "C", "D", "E", "F", "G", "A", "B","c", "d", "e", "f", "g", "a", "b", "c'", "d'", "e'", "f'", "g'", "a'", "b'", "c''", "d''"};
+    
+        public String spell(float frequency)
+        {
+            int i = 0;
+            int j = 0;
+            float temp = 0;
+            float temp2 = 1175;
+
+            for(i = 0; i < frequencies.length; i++)
+            {
+                temp = frequencies[i] - frequency;
+                if(temp < temp2)
+                {
+                    temp2 = temp;
+                }
+            }
+
+            j = (int) temp2;
+
+            return spellings[j];
+        }
+    }
+
+
+
     float[] lerpedBuffer;
     public void draw()
     {
